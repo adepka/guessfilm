@@ -8,6 +8,7 @@ jautajumBildes=[]
 nosaukums = []
 filmaBildes= []
 seciba=[]
+
 #-------------------- datu sagatavošana -----------------------#
 # nolasa jautājumu banku
 def funkDATI():
@@ -17,7 +18,7 @@ def funkDATI():
     f = open("banka.txt", "r", encoding = "utf-8")  
     nr = 0
 
-    tema = "Uzmini filmiņu"
+    tema = "Uzmini filmiņu" # Nosaukums pec noklusejuma
 
     for rinda in f:
         rindaTeksts = rinda.strip()
@@ -48,6 +49,7 @@ def funkSajaukt():
         atb_b.append(filmaBildes[seciba[i]])
         atb_t.append(nosaukums[seciba[i]])
     return jaut, atb_t, atb_b
+
 def funkSAKT():
     global atbildes, jautajumBildes, filmaBildes, nosaukums, tema
 
@@ -98,12 +100,14 @@ def funkREZULTATS():
 
 def funkTalak():
     global atbildes
+
+    #- Fiksejam atbildi pie režģa
     pogas_krasa = "#F1C68E"
     pogas_status = "disabled"
+    
     if len(atbildes) == 10:
         pogas_krasa = "#FFFFFF"
         pogas_status = "normal"
-        
         
     for nr in atbildes:
         pogas[nr - 1].config(
@@ -111,7 +115,6 @@ def funkTalak():
             bg=pogas_krasa,
         )
 
-        
     rezultata_skats.pack_forget()
     if len(atbildes) == 10:
         beiga_skats.pack(fill = 'both', expand = True)  
@@ -120,6 +123,10 @@ def funkTalak():
 def close_all_windows():
     logs.destroy()
 
+#---- Lasam datus no banka ----#
+tema, jautajumBildes, nosaukums, filmaBildes = funkDATI()
+
+#--- Sakam konstruet interfeicu
 #--- gatavojam galveno ekranu ---#
 logs = tk.Tk()
 logs.title("Konkurss")
@@ -129,12 +136,8 @@ logs.resizable(False, False)
 logs.geometry(f"{platums}x{augstums}+{-10}+{0}")
 logs.configure(bg = '#EEEEEE')
 
-#---- Lasam datus no banka ----#
-tema, jautajumBildes, nosaukums, filmaBildes = funkDATI()
-
 #------------------------------ sākuma skats -----------------------------#
 sakuma_skats = tk.Frame(logs)
-
 # uzraksts
 uzraksts = tk.Label(sakuma_skats, text=tema, fg = '#800000', font=('Verdana', 24, 'bold'))
 uzraksts.pack(pady = augstums // 10)
@@ -169,6 +172,7 @@ for i in range(1, 11):
     poga = tk.Button(centrs, text=str(i), font=('Verdana', 34, 'bold'), width=5, height=2, command=lambda x=i: funkJAUTAJUMS(x))
     poga.grid(row=(i-1)//5, column=(i-1)%5, padx=pogas_platums // 10, pady=pogas_augstums // 10)  # 2 rindas ar 5 pogiem
     pogas.append(poga)
+
 #------------------------------ jautajuma skats -----------------------------#
 jautajuma_skats = tk.Frame(logs)
 # izveido Label, lai parādītu jautajumu

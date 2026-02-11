@@ -1,9 +1,9 @@
-Uzmini kas par filmu?
+Filmins?
 terminatorQuiz.png|Terminator|terminatorAnswer.png
 batmanQuiz.png|BATMAN|batmanAnswer.png
 avatarQuiz.png|Avatar|avatarAnswer.png
 piratesQuiz.png|Pirates of the Caribbean|piratesAnswer.png
-mulanQuiz.png|Mulan|mulanAnswer.png
+mulanQuiz.png|Moana|mulanAnswer.png
 blackpantherQuiz.png|Black Panther|blackpantherAnswer.png
 wickQuiz.png|John Wick|wickAnswer.png
 forrestgumpQuiz.png|Forrest Gump|forrestgumpAnswer.png
